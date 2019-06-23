@@ -6,7 +6,7 @@
 package main;
 
 import gui.*;
-import java.util.ArrayList;
+import modelo.Agenda;
 
 /**
  *

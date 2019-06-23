@@ -6,6 +6,8 @@
 package gui;
 
 import javax.swing.*;
+import modelo.*;
+import bll.AgendaBL;
 
 /**
  *
@@ -13,6 +15,8 @@ import javax.swing.*;
  */
 public class InicioUI extends javax.swing.JFrame {
 
+    private Agenda agenda;
+    
     /**
      * Creates new form InicioUI
      */
@@ -40,6 +44,11 @@ public class InicioUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agenda");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         listaItens.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Coiso", "coiso2" };
@@ -132,7 +141,7 @@ public class InicioUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
-    private int mostrarItem(String titulo){
+    private int mostrarItem(ItemAgenda item, String titulo){
         JTextField firstName = new JTextField();
         JTextField lastName = new JTextField();
         JPasswordField password = new JPasswordField();
@@ -168,6 +177,12 @@ public class InicioUI extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_listaItensMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        agenda = AgendaBL.carregarAgenda();
+        
+        this.listaItens.setListData(agenda.getItens());
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

@@ -36,13 +36,14 @@ public class Agenda implements Serializable {
     }
     
     public void setColecaoTarefas(ItemAgenda[] colecaoTarefas){
+        this.colecaoTarefas = new ArrayList<>();
         for (ItemAgenda colecaoTarefa : colecaoTarefas) {
             this.colecaoTarefas.add(colecaoTarefa);
         }
     }
     
     public ItemAgenda[] getItens(){
-        return (ItemAgenda[])this.getColecaoTarefas().toArray();
+        return this.getColecaoTarefas().toArray(new ItemAgenda[0]);
     }
     
     public void inserir(ItemAgenda item){
@@ -52,18 +53,7 @@ public class Agenda implements Serializable {
     }
     
     public boolean remover(int id){
-        ItemAgenda itemRemocao = null;
-        for (ItemAgenda colecaoTarefa : this.getColecaoTarefas()) {
-            if (colecaoTarefa.getId() == id) {
-                itemRemocao = colecaoTarefa;
-                break;
-            }
-        }
-        if (itemRemocao == null) 
-            return false;
-        
-        this.colecaoTarefas.remove(itemRemocao);
-        return true;
+        return this.colecaoTarefas.remove(id) != null;
     }
     
     public boolean remover(ItemAgenda item){
@@ -91,9 +81,9 @@ public class Agenda implements Serializable {
     public boolean ler(){
         try {
             //Carrega o arquivo
-            FileInputStream arquivo = new FileInputStream("saida.dat");
+            FileInputStream arquivo = new FileInputStream("agenda.joao");
             ObjectInputStream objLeitura = new ObjectInputStream(arquivo);
-            this.setColecaoTarefas((ItemAgenda[])objLeitura.readObject());
+            this.setColecaoTarefas((ArrayList<ItemAgenda>)objLeitura.readObject());
             objLeitura.close();
             arquivo.close();
             return true;
