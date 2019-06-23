@@ -10,6 +10,9 @@ package modelo;
  * @author joao
  */
 public class Horario {
+    public static final int HORAS_MAXIMO = 23;
+    public static final int MINUTOS_MAXIMO = 59;
+    
     private int horas;
     private int minutos;
     
@@ -58,7 +61,7 @@ public class Horario {
     }
     
     private static boolean isHorarioValido(int hora, int minuto){
-        return (hora >= 0 && hora <= 23) && (minuto >= 0 && minuto <= 59);
+        return (hora >= 0 && hora <= Horario.HORAS_MAXIMO) && (minuto >= 0 && minuto <= Horario.MINUTOS_MAXIMO);
     }
     
     /**

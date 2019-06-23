@@ -15,11 +15,12 @@ public abstract class ItemAgenda {
     private String descricao;
     private Periodo periodo;
 
-    public ItemAgenda(String titulo, String descricao) {
+    public ItemAgenda(String titulo, String descricao, Periodo periodo) {
         this.titulo = titulo;
         this.descricao = descricao;
+        this.periodo = periodo;
     }
-
+    
     public ItemAgenda() {
         
     }
@@ -75,5 +76,17 @@ public abstract class ItemAgenda {
         }
         
         return conflitoDias;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        string.append("titulo: ");
+        string.append(titulo);
+        string.append(", descricao: ");
+        string.append(descricao);
+        string.append(", periodo: ");
+        string.append(periodo);
+        return string.toString();
     }
 }
