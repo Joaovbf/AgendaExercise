@@ -5,10 +5,12 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author joao
  */
-public class Agenda {
+public class Agenda implements Serializable {
     
 }

@@ -12,8 +12,14 @@ package modelo;
 public class Meta extends ItemAgenda{
     private int prioridade;
 
-    public Meta(int prioridade) {
-        this.prioridade = prioridade;
+    public Meta(int prioridade, String titulo, String descricao, Periodo periodo) {
+        super(titulo, descricao, periodo);
+        this.setPrioridade(prioridade);
+    }
+    
+    public Meta(){
+        super();
+        this.prioridade = 0;
     }
 
     public int getPrioridade() {
@@ -22,5 +28,14 @@ public class Meta extends ItemAgenda{
 
     public void setPrioridade(int prioridade) {
         this.prioridade = prioridade;
-    }    
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        string.append(super.toString());
+        string.append(", prioridade: ");
+        string.append(this.getPrioridade());
+        return string.toString();
+    }
 }

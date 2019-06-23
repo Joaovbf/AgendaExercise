@@ -22,7 +22,9 @@ public abstract class ItemAgenda {
     }
     
     public ItemAgenda() {
-        
+        this.titulo = "";
+        this.descricao = "";
+        this.periodo = null;
     }
 
     public int getId() {
@@ -82,11 +84,11 @@ public abstract class ItemAgenda {
     public String toString() {
         StringBuilder string = new StringBuilder();
         string.append("titulo: ");
-        string.append(titulo);
+        string.append(this.getTitulo());
         string.append(", descricao: ");
-        string.append(descricao);
+        string.append(this.getDescricao());
         string.append(", periodo: ");
-        string.append(periodo);
+        string.append(this.getPeriodo());
         return string.toString();
     }
 }
