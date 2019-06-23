@@ -5,11 +5,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author joao
  */
-public class Horario {
+public class Horario implements Serializable {
     public static final int HORAS_MAXIMO = 23;
     public static final int MINUTOS_MAXIMO = 59;
     
@@ -34,6 +36,14 @@ public class Horario {
     public Horario(int horas, int minutos) throws Exception{
         this.setHoras(horas);
         this.setMinutos(minutos);
+    }
+    
+    public void setHorario(String horario) throws Exception{
+        String[] dados = horario.split(":");
+        int hora = Integer.parseInt(dados[0]);
+        int minuto = Integer.parseInt(dados[1]);
+        this.setHoras(hora);
+        this.setMinutos(minuto);
     }
     
     //métodos de acesso para horas

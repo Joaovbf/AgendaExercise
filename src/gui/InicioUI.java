@@ -41,6 +41,7 @@ public class InicioUI extends javax.swing.JFrame {
         btnNovoEvento = new javax.swing.JButton();
         btnNovaMeta = new javax.swing.JButton();
         btnNovoLembrete = new javax.swing.JButton();
+        btnFlush = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agenda");
@@ -50,11 +51,6 @@ public class InicioUI extends javax.swing.JFrame {
             }
         });
 
-        listaItens.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Coiso", "coiso2" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         listaItens.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listaItens.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -75,10 +71,27 @@ public class InicioUI extends javax.swing.JFrame {
         });
 
         btnNovoEvento.setText("Criar Novo Evento");
+        btnNovoEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoEventoActionPerformed(evt);
+            }
+        });
 
         btnNovaMeta.setText("Criar Nova Meta");
+        btnNovaMeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovaMetaActionPerformed(evt);
+            }
+        });
 
         btnNovoLembrete.setText("Criar Novo Lembrete");
+
+        btnFlush.setText("Apagar Agenda");
+        btnFlush.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFlushActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,8 +110,9 @@ public class InicioUI extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnNovoEvento)
                             .addComponent(btnNovaMeta)
-                            .addComponent(btnNovoLembrete))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                            .addComponent(btnNovoLembrete)
+                            .addComponent(btnFlush, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,14 +123,15 @@ public class InicioUI extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnNovoEvento)
                         .addGap(18, 18, 18)
                         .addComponent(btnNovaMeta)
                         .addGap(18, 18, 18)
                         .addComponent(btnNovoLembrete)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                        .addComponent(btnFlush)))
                 .addContainerGap())
         );
 
@@ -140,49 +155,38 @@ public class InicioUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private int mostrarItem(ItemAgenda item, String titulo){
-        JTextField firstName = new JTextField();
-        JTextField lastName = new JTextField();
-        JPasswordField password = new JPasswordField();
-        final JComponent[] inputs = new JComponent[] {
-                new JLabel("First"),
-                firstName,
-                new JLabel("Last"),
-                lastName,
-                new JLabel("Password"),
-                password
-        };
-        return JOptionPane.showConfirmDialog(null, inputs, titulo, JOptionPane.OK_CANCEL_OPTION ,JOptionPane.INFORMATION_MESSAGE);
-    }
-    
+        
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
         JOptionPane.showMessageDialog(null, ((JButton)evt.getSource()).getToolTipText());
     }//GEN-LAST:event_btnInfoActionPerformed
 
     private void listaItensMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaItensMouseClicked
         if (evt.getClickCount() == 2) {
-            JTextField firstName = new JTextField();
-            JTextField lastName = new JTextField();
-            JPasswordField password = new JPasswordField();
-            final JComponent[] inputs = new JComponent[] {
-                    new JLabel("First"),
-                    firstName,
-                    new JLabel("Last"),
-                    lastName,
-                    new JLabel("Password"),
-                    password
-            };
-            int result = JOptionPane.showConfirmDialog(null, inputs, "Detalhes", JOptionPane.OK_CANCEL_OPTION ,JOptionPane.INFORMATION_MESSAGE);
-            
+            ItemAgenda item = (ItemAgenda)((JList)evt.getSource()).getSelectedValue();
+            System.out.print(item.toString());
         }
     }//GEN-LAST:event_listaItensMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        agenda = AgendaBL.carregarAgenda();
+        this.agenda = AgendaBL.carregarAgenda();
         
-        this.listaItens.setListData(agenda.getItens());
+        this.listaItens.setListData(this.agenda.getItens());
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnNovoEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoEventoActionPerformed
+        AgendaBL.cadastrarEvento(this.agenda);
+        this.listaItens.setListData(this.agenda.getItens());
+    }//GEN-LAST:event_btnNovoEventoActionPerformed
+
+    private void btnNovaMetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaMetaActionPerformed
+        AgendaBL.cadastrarMeta(this.agenda);
+        this.listaItens.setListData(this.agenda.getItens());
+    }//GEN-LAST:event_btnNovaMetaActionPerformed
+
+    private void btnFlushActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFlushActionPerformed
+        agenda = new Agenda();
+        agenda.gravar();
+    }//GEN-LAST:event_btnFlushActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +224,7 @@ public class InicioUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFlush;
     private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnNovaMeta;
     private javax.swing.JButton btnNovoEvento;

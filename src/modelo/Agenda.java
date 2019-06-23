@@ -17,6 +17,10 @@ import java.util.ArrayList;
  * @author joao
  */
 public class Agenda implements Serializable {
+    public static final int META_ITEM = 1;
+    public static final int EVENTO_ITEM = 2;
+    public static final int LEMBRETE_ITEM = 3;
+    
     private ArrayList<ItemAgenda> colecaoTarefas;
 
     public Agenda() {
@@ -47,8 +51,12 @@ public class Agenda implements Serializable {
     }
     
     public void inserir(ItemAgenda item){
-        int novoId = this.getItens()[this.getItens().length-1].getId() + 1;
-        item.setId(novoId);
+        if (this.getColecaoTarefas().size() > 0){
+            int novoId = this.getItens()[this.getItens().length-1].getId() + 1;
+            item.setId(novoId);
+        }
+        else
+            item.setId(1);
         this.colecaoTarefas.add(item);
     }
     

@@ -5,11 +5,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author joao
  */
-public abstract class ItemAgenda {
+public abstract class ItemAgenda implements Serializable {
     private int id = 0;
     private String titulo;
     private String descricao;
@@ -85,10 +87,10 @@ public abstract class ItemAgenda {
         StringBuilder string = new StringBuilder();
         string.append("titulo: ");
         string.append(this.getTitulo());
-        string.append(", descricao: ");
-        string.append(this.getDescricao());
-        string.append(", periodo: ");
-        string.append(this.getPeriodo());
+        string.append("\nInício: ");
+        string.append(this.getPeriodo().getInicio());
+        string.append("\nFim: ");
+        string.append(this.getPeriodo().getFim());
         return string.toString();
     }
 }

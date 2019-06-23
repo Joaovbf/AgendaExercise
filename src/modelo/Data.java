@@ -5,11 +5,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author joao
  */
-public class Data {
+public class Data implements Serializable {
     private int dia;
     private int mes;
     private int ano;

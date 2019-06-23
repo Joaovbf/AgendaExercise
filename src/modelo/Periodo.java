@@ -5,16 +5,25 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author joao
  */
-public class Periodo {
+public class Periodo implements Serializable {
     private Data dataInicio;
     private Data dataFim;
     private Horario horaInicio;
     private Horario horaFim;
 
+    public Periodo() {
+        this.dataInicio = new Data();
+        this.dataFim = new Data();
+        this.horaInicio = new Horario();
+        this.horaFim = new Horario();
+    }
+    
     public Periodo(Data dataInicio, Data dataFim) {
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
