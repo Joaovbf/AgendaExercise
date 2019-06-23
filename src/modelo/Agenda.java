@@ -5,6 +5,10 @@
  */
 package modelo;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -29,6 +33,12 @@ public class Agenda implements Serializable {
 
     public void setColecaoTarefas(ArrayList<ItemAgenda> colecaoTarefas) {
         this.colecaoTarefas = colecaoTarefas;
+    }
+    
+    public void setColecaoTarefas(ItemAgenda[] colecaoTarefas){
+        for (ItemAgenda colecaoTarefa : colecaoTarefas) {
+            this.colecaoTarefas.add(colecaoTarefa);
+        }
     }
     
     public ItemAgenda[] getItens(){
@@ -61,10 +71,36 @@ public class Agenda implements Serializable {
     }
     
     public boolean gravar(){
-        return true;
+        try {
+            FileOutputStream arquivo = new FileOutputStream(System.getProperty("user.dir") + "/agenda.joao");
+            ObjectOutputStream objGravar = new ObjectOutputStream(arquivo);
+            //Grava o objeto cliente no arquivo
+            objGravar.writeObject(this.getColecaoTarefas());
+            objGravar.flush();
+            objGravar.close();
+            arquivo.flush();
+            arquivo.close();
+            return true;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
     
     public boolean ler(){
-        return true;
+        try {
+            //Carrega o arquivo
+            FileInputStream arquivo = new FileInputStream("saida.dat");
+            ObjectInputStream objLeitura = new ObjectInputStream(arquivo);
+            this.setColecaoTarefas((ItemAgenda[])objLeitura.readObject());
+            objLeitura.close();
+            arquivo.close();
+            return true;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

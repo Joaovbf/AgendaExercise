@@ -28,7 +28,7 @@ public class Meta extends ItemAgenda{
 
     public void setPrioridade(int prioridade) {
         this.prioridade = prioridade;
-    }
+    }   
     
     @Override
     public String toString() {
