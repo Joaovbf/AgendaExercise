@@ -43,9 +43,9 @@ public class InicioUI extends javax.swing.JFrame {
         btnNovoLembrete = new javax.swing.JButton();
         btnFlush = new javax.swing.JButton();
         btnPeriodo = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnOrdenaMetas = new javax.swing.JButton();
+        btnOrdenaLembretes = new javax.swing.JButton();
+        btnOrdenaEventos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agenda");
@@ -104,16 +104,26 @@ public class InicioUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Metas Ordenadas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnOrdenaMetas.setText("Metas Ordenadas");
+        btnOrdenaMetas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnOrdenaMetasActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Lembretes Ordenados");
+        btnOrdenaLembretes.setText("Lembretes Ordenados");
+        btnOrdenaLembretes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenaLembretesActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Eventos Ordenados");
+        btnOrdenaEventos.setText("Eventos Ordenados");
+        btnOrdenaEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenaEventosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,9 +148,9 @@ public class InicioUI extends javax.swing.JFrame {
                             .addComponent(btnNovaMeta)
                             .addComponent(btnNovoLembrete)
                             .addComponent(btnPeriodo)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
+                            .addComponent(btnOrdenaMetas)
+                            .addComponent(btnOrdenaLembretes)
+                            .addComponent(btnOrdenaEventos))
                         .addContainerGap(62, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -161,11 +171,11 @@ public class InicioUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnPeriodo)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btnOrdenaMetas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addComponent(btnOrdenaLembretes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
+                        .addComponent(btnOrdenaEventos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addComponent(btnFlush))
                     .addComponent(jScrollPane1)))
@@ -231,9 +241,23 @@ public class InicioUI extends javax.swing.JFrame {
             this.listaItens.setListData(itens);
     }//GEN-LAST:event_btnPeriodoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnOrdenaMetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenaMetasActionPerformed
+        ItemAgenda[] itens = AgendaBL.ordenarMetas(this.agenda);
+        if (itens.length>0) 
+            this.listaItens.setListData(itens);
+    }//GEN-LAST:event_btnOrdenaMetasActionPerformed
+
+    private void btnOrdenaLembretesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenaLembretesActionPerformed
+        ItemAgenda[] itens = AgendaBL.ordenarLembretes(this.agenda);
+        if (itens.length>0) 
+            this.listaItens.setListData(itens);
+    }//GEN-LAST:event_btnOrdenaLembretesActionPerformed
+
+    private void btnOrdenaEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenaEventosActionPerformed
+        ItemAgenda[] itens = AgendaBL.ordenarEventos(this.agenda);
+        if (itens.length>0) 
+            this.listaItens.setListData(itens);
+    }//GEN-LAST:event_btnOrdenaEventosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,10 +300,10 @@ public class InicioUI extends javax.swing.JFrame {
     private javax.swing.JButton btnNovaMeta;
     private javax.swing.JButton btnNovoEvento;
     private javax.swing.JButton btnNovoLembrete;
+    private javax.swing.JButton btnOrdenaEventos;
+    private javax.swing.JButton btnOrdenaLembretes;
+    private javax.swing.JButton btnOrdenaMetas;
     private javax.swing.JButton btnPeriodo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

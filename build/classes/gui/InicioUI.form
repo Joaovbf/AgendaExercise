@@ -71,9 +71,9 @@
                               <Component id="btnNovaMeta" min="-2" max="-2" attributes="0"/>
                               <Component id="btnNovoLembrete" min="-2" max="-2" attributes="0"/>
                               <Component id="btnPeriodo" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnOrdenaMetas" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnOrdenaLembretes" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnOrdenaEventos" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="62" max="32767" attributes="0"/>
                       </Group>
@@ -100,11 +100,11 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnPeriodo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnOrdenaMetas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnOrdenaLembretes" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnOrdenaEventos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="66" max="32767" attributes="0"/>
                           <Component id="btnFlush" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -187,23 +187,29 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPeriodoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnOrdenaMetas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Metas Ordenadas"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrdenaMetasActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnOrdenaLembretes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Lembretes Ordenados"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrdenaLembretesActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnOrdenaEventos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eventos Ordenados"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrdenaEventosActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
