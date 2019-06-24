@@ -38,7 +38,4 @@ public class Lembrete extends ItemAgenda{
         string.append(this.getTempoAlerta());
         return string.toString();
     }
-    
-    
-    
 }

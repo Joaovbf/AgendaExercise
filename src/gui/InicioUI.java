@@ -166,7 +166,7 @@ public class InicioUI extends javax.swing.JFrame {
     private void listaItensMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaItensMouseClicked
         if (evt.getClickCount() == 2) {
             ItemAgenda item = (ItemAgenda)((JList)evt.getSource()).getSelectedValue();
-            System.out.print(item.toString());
+            AgendaBL.alterarItem(item, agenda, "Alterar Item");
         }
     }//GEN-LAST:event_listaItensMouseClicked
 
