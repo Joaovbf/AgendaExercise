@@ -73,6 +73,7 @@ public class Periodo implements Serializable {
     public String getInicio(){
         StringBuilder string = new StringBuilder();
         string.append(this.getDataInicio().toString());
+        string.append(" ");
         string.append(this.getHoraInicio().toString());
         return string.toString();
     }
@@ -80,6 +81,7 @@ public class Periodo implements Serializable {
     public String getFim(){
         StringBuilder string = new StringBuilder();
         string.append(this.getDataFim().toString());
+        string.append(" ");
         string.append(this.getHoraFim().toString());
         return string.toString();    
     }

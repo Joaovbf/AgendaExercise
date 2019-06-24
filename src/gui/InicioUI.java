@@ -108,10 +108,13 @@ public class InicioUI extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnNovoEvento)
-                            .addComponent(btnNovaMeta)
-                            .addComponent(btnNovoLembrete)
-                            .addComponent(btnFlush, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(btnFlush, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnNovoEvento)
+                                    .addComponent(btnNovaMeta)
+                                    .addComponent(btnNovoLembrete))
+                                .addGap(4, 4, 4)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -186,6 +189,7 @@ public class InicioUI extends javax.swing.JFrame {
     private void btnFlushActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFlushActionPerformed
         agenda = new Agenda();
         agenda.gravar();
+        this.listaItens.setListData(this.agenda.getItens());
     }//GEN-LAST:event_btnFlushActionPerformed
 
     /**

@@ -26,7 +26,7 @@ public abstract class ItemAgenda implements Serializable {
     public ItemAgenda() {
         this.titulo = "";
         this.descricao = "";
-        this.periodo = null;
+        this.periodo = new Periodo();
     }
 
     public int getId() {
@@ -85,11 +85,11 @@ public abstract class ItemAgenda implements Serializable {
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-        string.append("titulo: ");
+        string.append("\n Título: ");
         string.append(this.getTitulo());
-        string.append("\nInício: ");
+        string.append("\n Início: ");
         string.append(this.getPeriodo().getInicio());
-        string.append("\nFim: ");
+        string.append("\n Fim: ");
         string.append(this.getPeriodo().getFim());
         return string.toString();
     }

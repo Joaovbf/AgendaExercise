@@ -49,6 +49,10 @@ public class Data implements Serializable {
         int dia = Integer.parseInt(valores[0]);
         int mes = Integer.parseInt(valores[1]);
         int ano = Integer.parseInt(valores[2]);
+        
+        //caso de data escrita com somente dois dígitos
+        ano = ano < 100 ? ano+2000 : ano;
+        
         //validação
         if(!Data.isDataValida(dia,mes,ano)){
             throw new Exception("Data inválida");
@@ -113,6 +117,7 @@ public class Data implements Serializable {
      * @return 
      */
     public static boolean isDataValida(int dia, int mes, int ano){
+        
         if (ano < 1582 || mes>12)
             return false;
         

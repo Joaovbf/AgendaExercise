@@ -97,6 +97,7 @@ public class Horario implements Serializable {
     public String toString(){
         StringBuilder hora = new StringBuilder();
         hora.append(this.horas);
+        hora.append(":");
         hora.append(this.minutos);
         return hora.toString();
     }
