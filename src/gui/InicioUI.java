@@ -42,6 +42,7 @@ public class InicioUI extends javax.swing.JFrame {
         btnNovaMeta = new javax.swing.JButton();
         btnNovoLembrete = new javax.swing.JButton();
         btnFlush = new javax.swing.JButton();
+        btnPeriodo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agenda");
@@ -93,6 +94,13 @@ public class InicioUI extends javax.swing.JFrame {
             }
         });
 
+        btnPeriodo.setText("Filtrar Período");
+        btnPeriodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPeriodoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -113,7 +121,8 @@ public class InicioUI extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnNovoEvento)
                                     .addComponent(btnNovaMeta)
-                                    .addComponent(btnNovoLembrete))
+                                    .addComponent(btnNovoLembrete)
+                                    .addComponent(btnPeriodo))
                                 .addGap(4, 4, 4)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -133,7 +142,9 @@ public class InicioUI extends javax.swing.JFrame {
                         .addComponent(btnNovaMeta)
                         .addGap(18, 18, 18)
                         .addComponent(btnNovoLembrete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPeriodo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                         .addComponent(btnFlush)))
                 .addContainerGap())
         );
@@ -192,6 +203,12 @@ public class InicioUI extends javax.swing.JFrame {
         this.listaItens.setListData(this.agenda.getItens());
     }//GEN-LAST:event_btnFlushActionPerformed
 
+    private void btnPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeriodoActionPerformed
+        ItemAgenda[] itens = AgendaBL.filtrarPeriodo(this.agenda);
+        if (itens.length>0) 
+            this.listaItens.setListData(itens);
+    }//GEN-LAST:event_btnPeriodoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -233,6 +250,7 @@ public class InicioUI extends javax.swing.JFrame {
     private javax.swing.JButton btnNovaMeta;
     private javax.swing.JButton btnNovoEvento;
     private javax.swing.JButton btnNovoLembrete;
+    private javax.swing.JButton btnPeriodo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

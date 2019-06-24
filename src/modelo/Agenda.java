@@ -46,8 +46,29 @@ public class Agenda implements Serializable {
         }
     }
     
+    /**
+     * Pega todos itens
+     * @return 
+     */
     public ItemAgenda[] getItens(){
         return this.getColecaoTarefas().toArray(new ItemAgenda[0]);
+    }
+    
+    /**
+     * Pega itens que estejam entre certo período
+     * @param periodo
+     * @return 
+     */
+    public ItemAgenda[] getItens(Periodo periodo){
+        ArrayList<ItemAgenda> itens = new ArrayList<>();
+        
+        for (ItemAgenda item : this.getColecaoTarefas()) {
+            if (item.getPeriodo().getDataInicio().compareTo(periodo.getDataInicio()) != 1 && item.getPeriodo().getDataFim().compareTo(periodo.getDataFim()) != -1) {
+                itens.add(item);
+            }
+        }
+        
+        return itens.toArray(new ItemAgenda[0]);
     }
     
     public void inserir(ItemAgenda item){

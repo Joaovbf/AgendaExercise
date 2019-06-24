@@ -68,6 +68,7 @@
                                       <Component id="btnNovoEvento" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnNovaMeta" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnNovoLembrete" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnPeriodo" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               </Group>
@@ -95,7 +96,9 @@
                           <Component id="btnNovaMeta" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnNovoLembrete" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="182" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnPeriodo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="135" max="32767" attributes="0"/>
                           <Component id="btnFlush" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -167,6 +170,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFlushActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnPeriodo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Filtrar Per&#xed;odo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPeriodoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
