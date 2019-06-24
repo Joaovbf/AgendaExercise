@@ -38,4 +38,9 @@ public class Meta extends ItemAgenda{
         string.append(this.getPrioridade());
         return string.toString();
     }
+    
+    public Meta clone(){
+        Meta novo = new Meta(this.getPrioridade(),this.getTitulo(),this.getDescricao(),this.getPeriodo());
+        return novo;
+    }
 }

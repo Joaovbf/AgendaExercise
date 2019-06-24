@@ -93,4 +93,7 @@ public abstract class ItemAgenda implements Serializable {
         string.append(this.getPeriodo().getFim());
         return string.toString();
     }
+    
+    @Override
+    public abstract ItemAgenda clone();
 }

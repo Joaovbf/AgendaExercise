@@ -38,4 +38,9 @@ public class Evento extends ItemAgenda{
         string.append(this.getLocalizacao());
         return string.toString();
     }
+    
+    public Evento clone(){
+        Evento novo = new Evento(this.getLocalizacao(),this.getTitulo(),this.getDescricao(),this.getPeriodo());
+        return novo;
+    }
 }

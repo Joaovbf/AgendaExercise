@@ -38,4 +38,9 @@ public class Lembrete extends ItemAgenda{
         string.append(this.getTempoAlerta());
         return string.toString();
     }
+    
+    public Lembrete clone(){
+        Lembrete novo = new Lembrete(this.getTempoAlerta(),this.getTitulo(),this.getDescricao(),this.getPeriodo());
+        return novo;
+    }
 }
