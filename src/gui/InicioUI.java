@@ -46,6 +46,8 @@ public class InicioUI extends javax.swing.JFrame {
         btnOrdenaMetas = new javax.swing.JButton();
         btnOrdenaLembretes = new javax.swing.JButton();
         btnOrdenaEventos = new javax.swing.JButton();
+        btnRemoveFiltro = new javax.swing.JButton();
+        lbClasseItens = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agenda");
@@ -125,6 +127,15 @@ public class InicioUI extends javax.swing.JFrame {
             }
         });
 
+        btnRemoveFiltro.setText("Remover filtro");
+        btnRemoveFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveFiltroActionPerformed(evt);
+            }
+        });
+
+        lbClasseItens.setText("Todos");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -136,7 +147,11 @@ public class InicioUI extends javax.swing.JFrame {
                 .addComponent(btnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbClasseItens)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -150,7 +165,8 @@ public class InicioUI extends javax.swing.JFrame {
                             .addComponent(btnPeriodo)
                             .addComponent(btnOrdenaMetas)
                             .addComponent(btnOrdenaLembretes)
-                            .addComponent(btnOrdenaEventos))
+                            .addComponent(btnOrdenaEventos)
+                            .addComponent(btnRemoveFiltro))
                         .addContainerGap(62, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -176,9 +192,15 @@ public class InicioUI extends javax.swing.JFrame {
                         .addComponent(btnOrdenaLembretes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnOrdenaEventos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRemoveFiltro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFlush))
-                    .addComponent(jScrollPane1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbClasseItens)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -237,27 +259,32 @@ public class InicioUI extends javax.swing.JFrame {
 
     private void btnPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeriodoActionPerformed
         ItemAgenda[] itens = AgendaBL.filtrarPeriodo(this.agenda);
-        if (itens.length>0) 
-            this.listaItens.setListData(itens);
+        this.listaItens.setListData(itens);
+        this.lbClasseItens.setText("Período");
     }//GEN-LAST:event_btnPeriodoActionPerformed
 
     private void btnOrdenaMetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenaMetasActionPerformed
         ItemAgenda[] itens = AgendaBL.ordenarMetas(this.agenda);
-        if (itens.length>0) 
-            this.listaItens.setListData(itens);
+        this.listaItens.setListData(itens);
+        this.lbClasseItens.setText("Metas");
     }//GEN-LAST:event_btnOrdenaMetasActionPerformed
 
     private void btnOrdenaLembretesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenaLembretesActionPerformed
         ItemAgenda[] itens = AgendaBL.ordenarLembretes(this.agenda);
-        if (itens.length>0) 
-            this.listaItens.setListData(itens);
+        this.listaItens.setListData(itens);
+        this.lbClasseItens.setText("Lembretes");
     }//GEN-LAST:event_btnOrdenaLembretesActionPerformed
 
     private void btnOrdenaEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenaEventosActionPerformed
         ItemAgenda[] itens = AgendaBL.ordenarEventos(this.agenda);
-        if (itens.length>0) 
-            this.listaItens.setListData(itens);
+        this.listaItens.setListData(itens);
+        this.lbClasseItens.setText("Eventos");
     }//GEN-LAST:event_btnOrdenaEventosActionPerformed
+
+    private void btnRemoveFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveFiltroActionPerformed
+        this.listaItens.setListData(this.agenda.getItens());
+        this.lbClasseItens.setText("Todos");
+    }//GEN-LAST:event_btnRemoveFiltroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,9 +331,11 @@ public class InicioUI extends javax.swing.JFrame {
     private javax.swing.JButton btnOrdenaLembretes;
     private javax.swing.JButton btnOrdenaMetas;
     private javax.swing.JButton btnPeriodo;
+    private javax.swing.JButton btnRemoveFiltro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbClasseItens;
     private javax.swing.JList listaItens;
     // End of variables declaration//GEN-END:variables
 }

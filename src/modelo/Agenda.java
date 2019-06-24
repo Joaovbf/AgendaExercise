@@ -63,7 +63,7 @@ public class Agenda implements Serializable {
         ArrayList<ItemAgenda> itens = new ArrayList<>();
         
         for (ItemAgenda item : this.getColecaoTarefas()) {
-            if (item.getPeriodo().getDataInicio().compareTo(periodo.getDataInicio()) != 1 && item.getPeriodo().getDataFim().compareTo(periodo.getDataFim()) != -1) {
+            if (periodo.getDataInicio().compareTo(item.getPeriodo().getDataInicio()) != 1 && periodo.getDataFim().compareTo(item.getPeriodo().getDataFim()) != -1) {
                 itens.add(item);
             }
         }
