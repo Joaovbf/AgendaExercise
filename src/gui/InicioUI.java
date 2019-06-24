@@ -91,6 +91,11 @@ public class InicioUI extends javax.swing.JFrame {
         });
 
         btnNovoLembrete.setText("Criar Novo Lembrete");
+        btnNovoLembrete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoLembreteActionPerformed(evt);
+            }
+        });
 
         btnFlush.setText("Apagar Agenda");
         btnFlush.addActionListener(new java.awt.event.ActionListener() {
@@ -285,6 +290,11 @@ public class InicioUI extends javax.swing.JFrame {
         this.listaItens.setListData(this.agenda.getItens());
         this.lbClasseItens.setText("Todos");
     }//GEN-LAST:event_btnRemoveFiltroActionPerformed
+
+    private void btnNovoLembreteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoLembreteActionPerformed
+        AgendaBL.cadastrarLembrete(this.agenda);
+        this.listaItens.setListData(this.agenda.getItens());
+    }//GEN-LAST:event_btnNovoLembreteActionPerformed
 
     /**
      * @param args the command line arguments
