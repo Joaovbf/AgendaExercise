@@ -13,8 +13,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- *
- * @author joao
+ * Classe que armazena e mantém todos os itens de Agenda gerindo-os como coleção
+ * @author Joao Vitor
  */
 public class Agenda implements Serializable {
     public static final int META_ITEM = 1;
@@ -71,6 +71,11 @@ public class Agenda implements Serializable {
         return itens.toArray(new ItemAgenda[0]);
     }
     
+    /**
+     * Define id e insere um item de agenda na coleção
+     * 
+     * @param item 
+     */
     public void inserir(ItemAgenda item){
         if (this.getColecaoTarefas().size() > 0){
             int novoId = this.getItens()[this.getItens().length-1].getId() + 1;
@@ -81,14 +86,31 @@ public class Agenda implements Serializable {
         this.colecaoTarefas.add(item);
     }
     
-    public boolean remover(int id){
-        return this.colecaoTarefas.remove(id) != null;
+    /**
+     * Remove determinado item pela sua posição na coleção
+     * 
+     * @param index
+     * @return 
+     */
+    public boolean remover(int index){
+        return this.colecaoTarefas.remove(index) != null;
     }
     
+    /**
+     * Remove a primeira ocorrencia de um item numa coleção
+     * 
+     * @param item
+     * @return 
+     */
     public boolean remover(ItemAgenda item){
         return this.colecaoTarefas.remove(item);
     }
     
+    /**
+     * Grava no disco a situação atual da agenda instânciada
+     * 
+     * @return 
+     */
     public boolean gravar(){
         try {
             FileOutputStream arquivo = new FileOutputStream(System.getProperty("user.dir") + "/agenda.joao");
@@ -107,6 +129,11 @@ public class Agenda implements Serializable {
         }
     }
     
+    /**
+     * Lê do disco agenda gravada anteriormente
+     * 
+     * @return 
+     */
     public boolean ler(){
         try {
             //Carrega o arquivo

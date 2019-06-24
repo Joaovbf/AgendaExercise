@@ -8,7 +8,7 @@ package modelo;
 import java.io.Serializable;
 
 /**
- *
+ * Classe responsável por manter data válida
  * @author joao
  */
 public class Data implements Serializable {
@@ -168,6 +168,12 @@ public class Data implements Serializable {
         return nova;
     }
     
+    /**
+     * Compara data atual a data passada
+     * 
+     * @param data
+     * @return
+     */
     public int compareTo(Data data){
         if(this.ano > data.ano || (this.ano == data.ano && this.mes > data.mes) || (this.ano == data.ano && this.mes == data.mes && this.dia > data.dia) )
             return 1;
