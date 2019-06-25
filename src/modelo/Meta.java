@@ -6,12 +6,19 @@
 package modelo;
 
 /**
- *
+ * Classe que representa um item de agenda, do tipo Meta
  * @author joao
  */
 public class Meta extends ItemAgenda{
     private int prioridade;
 
+    /**
+     * Contrutor completo
+     * @param prioridade
+     * @param titulo
+     * @param descricao
+     * @param periodo 
+     */
     public Meta(int prioridade, String titulo, String descricao, Periodo periodo) {
         super(titulo, descricao, periodo);
         this.setPrioridade(prioridade);

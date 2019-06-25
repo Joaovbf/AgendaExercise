@@ -8,7 +8,7 @@ package modelo;
 import java.io.Serializable;
 
 /**
- *
+ * Classe que armazena dados de um item geral de agenda
  * @author joao
  */
 public abstract class ItemAgenda implements Serializable {
@@ -17,12 +17,21 @@ public abstract class ItemAgenda implements Serializable {
     private String descricao;
     private Periodo periodo;
 
+    /**
+     * Construtor completo
+     * @param titulo
+     * @param descricao
+     * @param periodo 
+     */
     public ItemAgenda(String titulo, String descricao, Periodo periodo) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.periodo = periodo;
     }
     
+    /**
+     * Construtor para inicialização de todas variáveis
+     */
     public ItemAgenda() {
         this.titulo = "";
         this.descricao = "";
@@ -61,6 +70,11 @@ public abstract class ItemAgenda implements Serializable {
         this.periodo = periodo;
     }    
     
+    /**
+     * Verifica se há conflito entre itens de agenda
+     * @param item
+     * @return 
+     */
     public boolean hasConflito(ItemAgenda item){
         //variaveis apenas para evitar linha longa
         Periodo perThis = this.getPeriodo();

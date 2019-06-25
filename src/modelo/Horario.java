@@ -8,7 +8,7 @@ package modelo;
 import java.io.Serializable;
 
 /**
- *
+ * Armazena um horário válido
  * @author joao
  */
 public class Horario implements Serializable {
@@ -38,6 +38,11 @@ public class Horario implements Serializable {
         this.setMinutos(minutos);
     }
     
+    /**
+     * Define horário atraves de string formatada
+     * @param horario
+     * @throws Exception 
+     */
     public void setHorario(String horario) throws Exception{
         String[] dados = horario.split(":");
         int hora = Integer.parseInt(dados[0]);
@@ -70,6 +75,12 @@ public class Horario implements Serializable {
         return this.minutos;
     }
     
+    /**
+     * Verifica validade de dois inteiros possíveis componentes de um Horário
+     * @param hora
+     * @param minuto
+     * @return 
+     */
     private static boolean isHorarioValido(int hora, int minuto){
         return (hora >= 0 && hora <= Horario.HORAS_MAXIMO) && (minuto >= 0 && minuto <= Horario.MINUTOS_MAXIMO);
     }

@@ -8,7 +8,7 @@ package modelo;
 import java.io.Serializable;
 
 /**
- *
+ * Classe responsável por armazenar data e hora de um período
  * @author joao
  */
 public class Periodo implements Serializable {
@@ -17,6 +17,9 @@ public class Periodo implements Serializable {
     private Horario horaInicio;
     private Horario horaFim;
 
+    /**
+     * Contrutor padrão, inicializa todas variáveis
+     */
     public Periodo() {
         this.dataInicio = new Data();
         this.dataFim = new Data();
@@ -24,6 +27,11 @@ public class Periodo implements Serializable {
         this.horaFim = new Horario();
     }
     
+    /**
+     * Construtor para intervalo de datas
+     * @param dataInicio
+     * @param dataFim 
+     */
     public Periodo(Data dataInicio, Data dataFim) {
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
@@ -31,6 +39,13 @@ public class Periodo implements Serializable {
         this.horaFim = new Horario();
     }
 
+    /**
+     * Construtor completo
+     * @param dataInicio
+     * @param dataFim
+     * @param horaInicio
+     * @param horaFim 
+     */
     public Periodo(Data dataInicio, Data dataFim, Horario horaInicio, Horario horaFim) {
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
@@ -70,6 +85,10 @@ public class Periodo implements Serializable {
         this.horaFim = horaFim;
     }
     
+    /**
+     * Gera String formatada com data e hora de Inicio
+     * @return 
+     */
     public String getInicio(){
         StringBuilder string = new StringBuilder();
         string.append(this.getDataInicio().toString());
@@ -78,6 +97,10 @@ public class Periodo implements Serializable {
         return string.toString();
     }
     
+    /**
+     * Gera String formatada com data e hora de Fim
+     * @return 
+     */
     public String getFim(){
         StringBuilder string = new StringBuilder();
         string.append(this.getDataFim().toString());

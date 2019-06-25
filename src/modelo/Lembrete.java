@@ -6,12 +6,19 @@
 package modelo;
 
 /**
- *
+ * Classe que representa um item de agenda, do tipo Lembrete
  * @author joao
  */
 public class Lembrete extends ItemAgenda{
     private int tempoAlerta;
 
+    /**
+     * Contrutor completo
+     * @param tempoAlerta
+     * @param titulo
+     * @param descricao
+     * @param periodo 
+     */
     public Lembrete(int tempoAlerta, String titulo, String descricao, Periodo periodo) {
         super(titulo, descricao, periodo);
         this.tempoAlerta = tempoAlerta;

@@ -11,7 +11,8 @@ import javax.swing.*;
 import modelo.*;
 
 /**
- *
+ * Classe de regra de negócio para agenda, sendo uma camada intermediária entre interface e as classes da modeloagem
+ * 
  * @author joao
  */
 public abstract class AgendaBL {

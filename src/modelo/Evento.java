@@ -6,17 +6,27 @@
 package modelo;
 
 /**
- *
+ * Classe que representa um item de agenda, do tipo evento
  * @author joao
  */
 public class Evento extends ItemAgenda{
     private String localizacao;
-
+    
+    /**
+     * Contrutor completos dos dados
+     * @param localizacao
+     * @param titulo
+     * @param descricao
+     * @param periodo 
+     */
     public Evento(String localizacao, String titulo, String descricao, Periodo periodo) {
         super(titulo, descricao, periodo);
         this.localizacao = localizacao;
     }
     
+    /**
+     * Construtor que inicializa todas as variáveis
+     */
     public Evento(){
         super();
         this.localizacao = "";
